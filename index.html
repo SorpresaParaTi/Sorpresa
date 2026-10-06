@@ -1,1 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una pequeña sorpresa ❤️</title>
 
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+color:white;
+background:
+radial-gradient(circle at 20% 10%,#713657 0,#28152f 40%,#100914 100%);
+overflow-x:hidden;
+}
+
+.hearts span{
+position:fixed;
+bottom:-40px;
+font-size:22px;
+opacity:0;
+animation:float 9s linear infinite;
+pointer-events:none;
+}
+
+.hearts span:nth-child(1){left:10%;animation-delay:0s}
+.hearts span:nth-child(2){left:30%;animation-delay:2s}
+.hearts span:nth-child(3){left:50%;animation-delay:4s}
+.hearts span:nth-child(4){left:70%;animation-delay:1s}
+.hearts span:nth-child(5){left:90%;animation-delay:5s}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+15%{opacity:.35}
+100%{transform:translateY(-115vh) rotate(25deg);opacity:0}
+}
+
+.container{
+width:92%;
+max-width:430px;
+margin:auto;
+padding:30px 0 45px;
+}
+
+.card{
+padding:28px 20px;
+border-radius:30px;
+background:rgba(255,255,255,.09);
+border:1px solid rgba(255,255,255,.18);
+backdrop-filter:blur(18px);
+box-shadow:0 25px 70px rgba(0,0,0,.4);
+text-align:center;
+animation:entrada 1s ease;
+}
+
+@keyframes entrada{
+from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+.badge{
+font-size:11px;
+letter-spacing:3px;
+text-transform:uppercase;
+opacity:.65;
+}
+
+h1{
+font-size:31px;
+margin:10px 0;
+}
+
+.intro{
+line-height:1.6;
+opacity:.85;
+}
+
+.photo{
+width:210px;
+height:210px;
+margin:25px auto;
+padding:5px;
+border-radius:50%;
+background:linear-gradient(135deg,#fff,#ff75ad,#a17aff);
+box-shadow:0 0 45px rgba(255,100,170,.3);
+animation:pulse 3s infinite;
+}
+
+.photo img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.025)}
+}
+
+.music,
+.message{
+margin-top:18px;
+padding:18px;
+border-radius:22px;
+background:rgba(0,0,0,.18);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.track{
+display:flex;
+align-items:center;
+gap:12px;
+text-align:left;
+}
+
+.music-icon{
+font-size:32px;
+}
+
+.track b{
+display:block;
+font-size:17px;
+}
+
+.track small{
+opacity:.65;
+}
+
+audio{
+width:100%;
+margin-top:12px;
+}
+
+.message{
+line-height:1.65;
+}
+
+.message p{
+margin:9px 0;
+}
+
+.button{
+border:0;
+border-radius:999px;
+padding:15px 24px;
+margin-top:22px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+color:#4b1838;
+background:white;
+box-shadow:0 12px 30px rgba(0,0,0,.3);
+}
+
+.button:active{
+transform:scale(.96);
+}
+
+.hidden{
+display:none;
+}
+
+.reveal{
+animation:reveal .8s ease;
+}
+
+@keyframes reveal{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.gift{
+font-size:55px;
+animation:bounce 1.3s infinite;
+}
+
+@keyframes bounce{
+50%{transform:translateY(-8px)}
+}
+
+.footer{
+margin-top:22px;
+font-size:11px;
+opacity:.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts">
+<span>♥</span>
+<span>♡</span>
+<span>♥</span>
+<span>♡</span>
+<span>♥</span>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="badge">
+Una pequeña sorpresa
+</div>
+
+<h1>
+Para vos ❤️
+</h1>
+
+<p class="intro">
+No sé si esperabas encontrarte con esto,
+pero simplemente quería regalarte un momento lindo.
+</p>
+
+<div class="photo">
+<img src="foto.jpg" alt="Foto especial">
+</div>
+
+<div class="music">
+
+<div class="track">
+<div class="music-icon">🎵</div>
+
+<div>
+<b>Distancia</b>
+<small>3AM</small>
+</div>
+</div>
+
+<audio controls>
+<source src="distancia-3am.mp3" type="audio/mpeg">
+Tu navegador no puede reproducir este audio.
+</audio>
+
+</div>
+
+<div class="message">
+
+<strong>💌 Un pequeño mensaje</strong>
+
+<p>
+No sé si esperabas encontrarte con algo así,
+pero simplemente quería hacerte un pequeño detalle.
+</p>
+
+<p>
+A veces no hace falta un motivo enorme
+para querer sacarle una sonrisa a alguien. 😊
+</p>
+
+<p>
+Así que… disfrutá la canción, mirá la sorpresa
+y quedate con algo:
+<b>alguien pensó en vos y quiso regalarte un momento lindo.</b> ✨
+</p>
+
+</div>
+
+<button class="button" onclick="sorpresa()">
+🎁 ¿Querés ver la sorpresa?
+</button>
+
+<div id="final" class="message hidden">
+
+<div class="reveal">
+
+<div class="gift">
+🎁
+</div>
+
+<strong>
+✨ Sorpresa ✨
+</strong>
+
+<p>
+Si llegaste hasta acá,
+entonces ya valió la pena hacerlo.
+</p>
+
+<p>
+Espero haberte sacado aunque sea
+una pequeña sonrisa. ❤️
+</p>
+
+<p>
+<b>Ese era todo el objetivo.</b> 🌷
+</p>
+
+</div>
+
+</div>
+
+<div class="footer">
+Hecho para regalar una sonrisa ❤️
+</div>
+
+</div>
+</div>
+
+<script>
+
+function sorpresa(){
+
+const final=document.getElementById("final");
+
+final.classList.remove("hidden");
+
+const boton=document.querySelector(".button");
+
+boton.innerHTML="❤️ Sorpresa abierta";
+
+boton.disabled=true;
+
+setTimeout(function(){
+
+final.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+},200);
+
+}
+
+</script>
+
+</body>
+  </html>
