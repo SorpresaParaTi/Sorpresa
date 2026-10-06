@@ -3,336 +3,799 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Una pequeña sorpresa ❤️</title>
 
 <style>
-*{box-sizing:border-box}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap');
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-margin:0;
-min-height:100vh;
-font-family:Arial,sans-serif;
-color:white;
-background:
-radial-gradient(circle at 20% 10%,#713657 0,#28152f 40%,#100914 100%);
-overflow-x:hidden;
+    margin:0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 5%, #35122e 0%, #120912 42%, #050308 100%);
+    color:#fff;
+    font-family:'DM Sans',Arial,sans-serif;
+    overflow-x:hidden;
 }
+
+/* LUCES DE FONDO */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    top:-100px;
+    left:-100px;
+    background:#ff2d75;
+    filter:blur(120px);
+    opacity:.13;
+    pointer-events:none;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:300px;
+    height:300px;
+    right:-120px;
+    bottom:-80px;
+    background:#8b35ff;
+    filter:blur(120px);
+    opacity:.13;
+    pointer-events:none;
+}
+
+/* CORAZONES */
 
 .hearts span{
-position:fixed;
-bottom:-40px;
-font-size:22px;
-opacity:0;
-animation:float 9s linear infinite;
-pointer-events:none;
+    position:fixed;
+    bottom:-50px;
+    color:#ff477f;
+    font-size:18px;
+    opacity:0;
+    pointer-events:none;
+    animation:floatHeart 10s linear infinite;
+    z-index:0;
 }
 
-.hearts span:nth-child(1){left:10%;animation-delay:0s}
-.hearts span:nth-child(2){left:30%;animation-delay:2s}
-.hearts span:nth-child(3){left:50%;animation-delay:4s}
-.hearts span:nth-child(4){left:70%;animation-delay:1s}
-.hearts span:nth-child(5){left:90%;animation-delay:5s}
-
-@keyframes float{
-0%{transform:translateY(0);opacity:0}
-15%{opacity:.35}
-100%{transform:translateY(-115vh) rotate(25deg);opacity:0}
+.hearts span:nth-child(1){
+    left:8%;
+    animation-delay:0s;
 }
+
+.hearts span:nth-child(2){
+    left:27%;
+    animation-delay:3s;
+}
+
+.hearts span:nth-child(3){
+    left:52%;
+    animation-delay:6s;
+}
+
+.hearts span:nth-child(4){
+    left:75%;
+    animation-delay:2s;
+}
+
+.hearts span:nth-child(5){
+    left:92%;
+    animation-delay:5s;
+}
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(0) scale(.7);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.35;
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(25deg) scale(1.2);
+        opacity:0;
+    }
+}
+
+/* CONTENEDOR */
 
 .container{
-width:92%;
-max-width:430px;
-margin:auto;
-padding:30px 0 45px;
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:25px 16px 50px;
 }
+
+/* TARJETA PRINCIPAL */
 
 .card{
-padding:28px 20px;
-border-radius:30px;
-background:rgba(255,255,255,.09);
-border:1px solid rgba(255,255,255,.18);
-backdrop-filter:blur(18px);
-box-shadow:0 25px 70px rgba(0,0,0,.4);
-text-align:center;
-animation:entrada 1s ease;
+    position:relative;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:34px;
+    background:rgba(255,255,255,.045);
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    animation:appear 1s ease;
 }
 
-@keyframes entrada{
-from{opacity:0;transform:translateY(25px)}
-to{opacity:1;transform:translateY(0)}
+@keyframes appear{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
 
-.badge{
-font-size:11px;
-letter-spacing:3px;
-text-transform:uppercase;
-opacity:.65;
+/* CABECERA */
+
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 22px 8px;
 }
 
-h1{
-font-size:31px;
-margin:10px 0;
+.top-left{
+    font-family:'Pacifico',cursive;
+    font-size:23px;
+    color:#ffb4cc;
 }
 
-.intro{
-line-height:1.6;
-opacity:.85;
+.top-right{
+    font-size:12px;
+    color:rgba(255,255,255,.55);
+}
+
+/* FOTO */
+
+.photo-area{
+    position:relative;
+    margin:15px 15px 0;
+    height:430px;
+    overflow:hidden;
+    border-radius:27px;
+}
+
+.photo-area::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.02) 45%,
+            rgba(5,3,8,.92) 100%
+        );
 }
 
 .photo{
-width:210px;
-height:210px;
-margin:25px auto;
-padding:5px;
-border-radius:50%;
-background:linear-gradient(135deg,#fff,#ff75ad,#a17aff);
-box-shadow:0 0 45px rgba(255,100,170,.3);
-animation:pulse 3s infinite;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    animation:photoZoom 8s ease-in-out infinite alternate;
 }
 
-.photo img{
-width:100%;
-height:100%;
-object-fit:cover;
-border-radius:50%;
+@keyframes photoZoom{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.045);
+    }
 }
 
-@keyframes pulse{
-50%{transform:scale(1.025)}
+/* TEXTO SOBRE FOTO */
+
+.photo-text{
+    position:absolute;
+    z-index:2;
+    left:25px;
+    right:25px;
+    bottom:24px;
 }
 
-.music,
-.message{
-margin-top:18px;
-padding:18px;
-border-radius:22px;
-background:rgba(0,0,0,.18);
-border:1px solid rgba(255,255,255,.08);
+.small-title{
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:#ff9cba;
+    margin-bottom:4px;
 }
 
-.track{
-display:flex;
-align-items:center;
-gap:12px;
-text-align:left;
+.photo-text h1{
+    margin:0;
+    font-family:'Pacifico',cursive;
+    font-size:43px;
+    line-height:1.05;
+    color:#fff;
+    text-shadow:0 5px 25px rgba(0,0,0,.7);
 }
 
-.music-icon{
-font-size:32px;
+.photo-text h1 span{
+    color:#ff4d87;
 }
 
-.track b{
-display:block;
-font-size:17px;
+/* INTRO */
+
+.intro{
+    padding:25px 25px 10px;
+    text-align:center;
 }
 
-.track small{
-opacity:.65;
+.intro h2{
+    margin:0 0 10px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.intro p{
+    margin:0;
+    color:rgba(255,255,255,.68);
+    line-height:1.7;
+    font-size:14px;
+}
+
+.script{
+    margin-top:14px;
+    font-family:'Pacifico',cursive;
+    color:#ff6e9d;
+    font-size:21px;
+}
+
+/* REPRODUCTOR */
+
+.music{
+    margin:20px 18px 0;
+    padding:18px;
+    border-radius:25px;
+    border:1px solid rgba(255,73,130,.35);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,50,120,.09),
+            rgba(255,255,255,.035)
+        );
+    box-shadow:
+        0 15px 45px rgba(255,30,100,.08);
+}
+
+.music-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.music-cover{
+    width:70px;
+    height:70px;
+    flex-shrink:0;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        linear-gradient(
+            145deg,
+            #ff3978,
+            #7c245e 55%,
+            #21102a
+        );
+    box-shadow:0 8px 25px rgba(255,40,110,.22);
+    font-family:'Pacifico',cursive;
+    font-size:21px;
+}
+
+.music-info{
+    flex:1;
+}
+
+.music-info h3{
+    margin:0 0 4px;
+    font-size:18px;
+}
+
+.music-info p{
+    margin:0;
+    font-size:12px;
+    color:rgba(255,255,255,.5);
+}
+
+.heart{
+    color:#ff4c87;
+    font-size:24px;
+    animation:heartBeat 1.8s infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.18);
+    }
 }
 
 audio{
-width:100%;
-margin-top:12px;
+    width:100%;
+    margin-top:15px;
+    height:42px;
 }
 
-.message{
-line-height:1.65;
-}
-
-.message p{
-margin:9px 0;
-}
+/* BOTÓN */
 
 .button{
-border:0;
-border-radius:999px;
-padding:15px 24px;
-margin-top:22px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-color:#4b1838;
-background:white;
-box-shadow:0 12px 30px rgba(0,0,0,.3);
+    display:block;
+    width:calc(100% - 36px);
+    margin:22px auto 0;
+    padding:17px 20px;
+    border:none;
+    border-radius:999px;
+    background:
+        linear-gradient(
+            100deg,
+            #ff3f78,
+            #ff5e91,
+            #ff3972
+        );
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:
+        0 12px 35px rgba(255,45,115,.3),
+        inset 0 1px 0 rgba(255,255,255,.3);
+    transition:.25s;
+}
+
+.button:hover{
+    transform:translateY(-2px);
 }
 
 .button:active{
-transform:scale(.96);
+    transform:scale(.97);
 }
 
+/* SEPARADOR */
+
+.divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:28px 24px 0;
+    color:#ff5d91;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    height:1px;
+    flex:1;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,80,135,.45)
+    );
+}
+
+.divider::after{
+    background:linear-gradient(
+        90deg,
+        rgba(255,80,135,.45),
+        transparent
+    );
+}
+
+/* MENSAJE */
+
+.message{
+    margin:18px;
+    padding:23px;
+    border-radius:24px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.07);
+    text-align:center;
+}
+
+.message-title{
+    color:#ff91b1;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.message p{
+    margin:12px 0 0;
+    color:rgba(255,255,255,.72);
+    font-size:14px;
+    line-height:1.75;
+}
+
+/* SORPRESA */
+
 .hidden{
-display:none;
+    display:none;
 }
 
 .reveal{
-animation:reveal .8s ease;
+    margin:18px;
+    padding:30px 22px;
+    border-radius:27px;
+    text-align:center;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,57,120,.18),
+            transparent 65%
+        ),
+        rgba(255,255,255,.04);
+    border:1px solid rgba(255,76,135,.25);
+    animation:reveal .8s ease;
 }
 
 @keyframes reveal{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
 }
 
 .gift{
-font-size:55px;
-animation:bounce 1.3s infinite;
+    font-size:48px;
+    margin-bottom:12px;
+    animation:giftBounce 1.5s infinite;
 }
 
-@keyframes bounce{
-50%{transform:translateY(-8px)}
+@keyframes giftBounce{
+
+    50%{
+        transform:translateY(-7px) rotate(2deg);
+    }
 }
+
+.reveal strong{
+    display:block;
+    font-family:'Pacifico',cursive;
+    font-size:28px;
+    color:#ff7fa7;
+    font-weight:400;
+}
+
+.reveal p{
+    color:rgba(255,255,255,.72);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* FOOTER */
 
 .footer{
-margin-top:22px;
-font-size:11px;
-opacity:.4;
+    padding:20px 20px 25px;
+    text-align:center;
+    font-size:10px;
+    letter-spacing:2px;
+    color:rgba(255,255,255,.3);
+    text-transform:uppercase;
 }
+
+.footer-heart{
+    color:#ff477f;
+    font-size:18px;
+    display:block;
+    margin-bottom:7px;
+}
+
+/* CELULARES PEQUEÑOS */
+
+@media(max-width:380px){
+
+    .photo-area{
+        height:390px;
+    }
+
+    .photo-text h1{
+        font-size:37px;
+    }
+
+    .music{
+        margin-left:13px;
+        margin-right:13px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- CORAZONES -->
+
 <div class="hearts">
-<span>♥</span>
-<span>♡</span>
-<span>♥</span>
-<span>♡</span>
-<span>♥</span>
+    <span>♥</span>
+    <span>♡</span>
+    <span>♥</span>
+    <span>♡</span>
+    <span>♥</span>
 </div>
+
 
 <div class="container">
 
 <div class="card">
 
-<div class="badge">
-Una pequeña sorpresa
+    <!-- CABECERA -->
+
+    <div class="top">
+
+        <div class="top-left">
+            Para vos ❤️
+        </div>
+
+        <div class="top-right">
+            Gracias por estar aquí
+        </div>
+
+    </div>
+
+
+    <!-- FOTO -->
+
+    <div class="photo-area">
+
+        <img
+            class="photo"
+            src="file_0000000025bc820eaf77bcd695599c0f.png"
+            alt="Foto especial"
+        >
+
+        <div class="photo-text">
+
+            <div class="small-title">
+                Una pequeña
+            </div>
+
+            <h1>
+                Sorpresa<span>♡</span>
+            </h1>
+
+        </div>
+
+    </div>
+
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+        <h2>
+            Esta canción es para vos...
+        </h2>
+
+        <p>
+            Porque hay momentos que simplemente se sienten,
+            y este es uno de esos pequeños momentos
+            que quería compartir contigo.
+        </p>
+
+        <div class="script">
+            Disfrutala, linda ❤️
+        </div>
+
+    </div>
+
+
+    <!-- MÚSICA -->
+
+    <div class="music">
+
+        <div class="music-top">
+
+            <div class="music-cover">
+                3AM
+            </div>
+
+            <div class="music-info">
+
+                <h3>
+                    3AM - Distancia
+                </h3>
+
+                <p>
+                    Una canción especial ♡
+                </p>
+
+            </div>
+
+            <div class="heart">
+                ♥
+            </div>
+
+        </div>
+
+        <audio controls>
+
+            <source
+                src="3AM - Distancia.mp3"
+                type="audio/mpeg"
+            >
+
+            Tu navegador no puede reproducir este audio.
+
+        </audio>
+
+    </div>
+
+
+    <!-- BOTÓN -->
+
+    <button
+        class="button"
+        onclick="sorpresa()"
+        id="sorpresaBtn"
+    >
+        ❤️ Abrir mi sorpresa
+    </button>
+
+
+    <!-- SEPARADOR -->
+
+    <div class="divider">
+        ♥
+    </div>
+
+
+    <!-- MENSAJE -->
+
+    <div class="message">
+
+        <div class="message-title">
+            💌 UN PEQUEÑO MENSAJE
+        </div>
+
+        <p>
+            No sé si esperabas encontrarte con algo así,
+            pero simplemente quería hacerte un pequeño detalle.
+        </p>
+
+        <p>
+            A veces no hace falta un motivo enorme
+            para querer sacarle una sonrisa a alguien. 😊
+        </p>
+
+        <p>
+            Así que... disfrutá la canción,
+            mirá la sorpresa y quedate con algo:
+            <b>
+                alguien pensó en vos y quiso regalarte
+                un momento lindo.
+            </b>
+            ✨
+        </p>
+
+    </div>
+
+
+    <!-- SORPRESA OCULTA -->
+
+    <div
+        id="final"
+        class="hidden"
+    >
+
+        <div class="reveal">
+
+            <div class="gift">
+                🎁
+            </div>
+
+            <strong>
+                Sorpresa ✨
+            </strong>
+
+            <p>
+                Si llegaste hasta acá,
+                entonces ya valió la pena hacerlo.
+            </p>
+
+            <p>
+                Espero haberte sacado aunque sea
+                una pequeña sonrisa. ❤️
+            </p>
+
+            <p>
+                <b>
+                    Ese era todo el objetivo.
+                </b>
+                🌷
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- PIE -->
+
+    <div class="footer">
+
+        <span class="footer-heart">
+            ♥
+        </span>
+
+        Hecho para regalar una sonrisa
+
+    </div>
+
 </div>
 
-<h1>
-Para vos ❤️
-</h1>
-
-<p class="intro">
-No sé si esperabas encontrarte con esto,
-pero simplemente quería regalarte un momento lindo.
-</p>
-
-<div class="photo">
-<img src="file_0000000025bc820eaf77bcd695599c0f.png" alt="Foto especial">
-
-<div class="music">
-
-<div class="track">
-<div class="music-icon">🎵</div>
-
-<div>
-<b>Distancia</b>
-<small>3AM</small>
-</div>
 </div>
 
-<audio controls>
-<source src="3AM - Distancia.mp3" type="audio/mpeg">
-Tu navegador no puede reproducir este audio.
-</audio>
-
-</div>
-
-<div class="message">
-
-<strong>💌 Un pequeño mensaje</strong>
-
-<p>
-No sé si esperabas encontrarte con algo así,
-pero simplemente quería hacerte un pequeño detalle.
-</p>
-
-<p>
-A veces no hace falta un motivo enorme
-para querer sacarle una sonrisa a alguien. 😊
-</p>
-
-<p>
-Así que… disfrutá la canción, mirá la sorpresa
-y quedate con algo:
-<b>alguien pensó en vos y quiso regalarte un momento lindo.</b> ✨
-</p>
-
-</div>
-
-<button class="button" onclick="sorpresa()">
-🎁 ¿Querés ver la sorpresa?
-</button>
-
-<div id="final" class="message hidden">
-
-<div class="reveal">
-
-<div class="gift">
-🎁
-</div>
-
-<strong>
-✨ Sorpresa ✨
-</strong>
-
-<p>
-Si llegaste hasta acá,
-entonces ya valió la pena hacerlo.
-</p>
-
-<p>
-Espero haberte sacado aunque sea
-una pequeña sonrisa. ❤️
-</p>
-
-<p>
-<b>Ese era todo el objetivo.</b> 🌷
-</p>
-
-</div>
-
-</div>
-
-<div class="footer">
-Hecho para regalar una sonrisa ❤️
-</div>
-
-</div>
-</div>
 
 <script>
 
 function sorpresa(){
 
-const final=document.getElementById("final");
+    const final =
+        document.getElementById("final");
 
-final.classList.remove("hidden");
+    const boton =
+        document.getElementById("sorpresaBtn");
 
-const boton=document.querySelector(".button");
+    final.classList.remove("hidden");
 
-boton.innerHTML="❤️ Sorpresa abierta";
+    boton.innerHTML =
+        "❤️ Sorpresa abierta";
 
-boton.disabled=true;
+    boton.disabled = true;
 
-setTimeout(function(){
+    setTimeout(function(){
 
-final.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
+        final.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
 
-},200);
+    },200);
 
 }
 
 </script>
 
 </body>
-  </html>
+</html>
